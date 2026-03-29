@@ -1,0 +1,5 @@
+This is the first paragraph of my test document. I am building a RAG document QA system step by step.
+This project will support file upload, text extraction, chunking, embeddings, vector database indexing, retrieval, and citation support.
+The goal is to make this project part of my GitHub portfolio.
+Chunking is important because long documents should not be passed to the model as one giant block.
+Instead, we split them into manageable pieces so they can later be embedded and retrieved efficiently.
