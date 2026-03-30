@@ -35,14 +35,14 @@ This project demonstrates how to build an end-to-end RAG pipeline from scratch, 
 
 This project implements a basic Retrieval-Augmented Generation (RAG) pipeline:
 
-1. Upload document  
-2. Extract text from document  
-3. Split text into chunks  
-4. Generate embeddings for each chunk  
-5. Store embeddings in Qdrant  
-6. Embed user query  
-7. Retrieve top-k relevant chunks  
-8. Return answer with citation  
+1. Upload document
+2. Extract text from document
+3. Split text into chunks
+4. Generate embeddings for each chunk
+5. Store embeddings in Qdrant
+6. Embed user query
+7. Retrieve top-k relevant chunks
+8. Return answer with citation
 
 This pipeline enables document-grounded question answering with transparent citation support.
 
@@ -73,14 +73,19 @@ rag-document-qa/
 ├── README.md
 ├── .gitignore
 └── .env.example
+```
+
+---
 
 ## API Endpoints
 
 ### Basic
-- `GET /`
-- `GET /health`
+
+- `GET /` — Root
+- `GET /health` — Health check
 
 ### Document Processing
+
 - `POST /upload`
 - `POST /upload-and-read`
 - `POST /upload-read-chunk`
@@ -88,6 +93,7 @@ rag-document-qa/
 - `POST /upload-read-chunk-embed-index`
 
 ### Retrieval & QA
+
 - `POST /query`
 - `POST /answer`
 
@@ -102,8 +108,10 @@ rag-document-qa/
   "question": "What is the goal of this project?",
   "top_k": 3
 }
+```
 
 ### Answer Response
+
 ```json
 {
   "question": "What is the goal of this project?",
@@ -118,53 +126,81 @@ rag-document-qa/
     }
   ]
 }
+```
+
+---
 
 ## How to Run Locally
+
 ### 1. Create virtual environment
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
+```
 
 ### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
 ### 3. Start Qdrant (Docker)
+
+```bash
 docker run -p 6333:6333 qdrant/qdrant
+```
 
 ### 4. Start FastAPI
+
+```bash
 python -m uvicorn app.main:app --reload
+```
 
 ### 5. Open Swagger UI
+
+```
 http://127.0.0.1:8000/docs
+```
+
+---
 
 ## Notes
-Supports .txt and .pdf documents
-Uses local embeddings (no external API required)
-Retrieval-based answer generation (lightweight, no LLM yet)
-Citation metadata enables traceable answers
-Designed for clarity, extensibility, and learning
+
+- Supports `.txt` and `.pdf` documents
+- Uses local embeddings (no external API required)
+- Retrieval-based answer generation (lightweight, no LLM yet)
+- Citation metadata enables traceable answers
+- Designed for clarity, extensibility, and learning
+
+---
 
 ## Roadmap
 
 Planned improvements:
 
-Better chunking strategies (semantic / paragraph-aware)
-Improved citation formatting (highlighting)
-Evaluation dataset and retrieval metrics
-Docker Compose for full stack setup
-Cloud deployment
-LLM-based answer generation
-Frontend UI for document QA
+- Better chunking strategies (semantic / paragraph-aware)
+- Improved citation formatting (highlighting)
+- Evaluation dataset and retrieval metrics
+- Docker Compose for full stack setup
+- Cloud deployment
+- LLM-based answer generation
+- Frontend UI for document QA
+
+---
 
 ## Why This Project
 
 This project demonstrates:
 
-End-to-end RAG system design
-Practical document processing pipeline
-Local embedding workflows
-Vector database integration (Qdrant)
-Retrieval-based QA with citation grounding
-Production-style API design with FastAPI
+- End-to-end RAG system design
+- Practical document processing pipeline
+- Local embedding workflows
+- Vector database integration (Qdrant)
+- Retrieval-based QA with citation grounding
+- Production-style API design with FastAPI
+
+---
 
 ## License
 
